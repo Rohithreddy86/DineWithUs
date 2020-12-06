@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './shared/main-header/main-header.component';
 
-import { DxButtonModule } from 'devextreme-angular';
-import { DxToolbarModule } from 'devextreme-angular'; 
+import { DevExtremeModule } from 'devextreme-angular';
 import { from } from 'rxjs';
 
 @NgModule({
@@ -17,8 +16,7 @@ import { from } from 'rxjs';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DxButtonModule,
-    DxToolbarModule
+    DevExtremeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
