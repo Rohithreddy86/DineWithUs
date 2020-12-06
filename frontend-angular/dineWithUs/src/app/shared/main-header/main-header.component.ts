@@ -12,4 +12,9 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  topFunction()
+  {
+    document.documentElement.scrollTop = 0;
+  }
+
 }
