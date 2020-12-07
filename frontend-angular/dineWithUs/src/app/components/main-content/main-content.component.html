@@ -1,1 +1,25 @@
-<p>main-content works!</p>
+<app-scrolling-content></app-scrolling-content>
+
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;">
+    <div *ngFor='let videocard of videocards1'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo()">
+            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{videocard.title}}</h5>
+                <p class="card-text">{{videocard.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin: 30px;">
+    <div class="card-header">
+      Quote
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+    </div>
+</div>

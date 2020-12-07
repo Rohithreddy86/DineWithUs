@@ -1,6 +1,6 @@
 export class Videocard
 {
-    cradID : Number;
+    cardID : Number;
     title : string;
     description : string;
     imageUrl : string;
