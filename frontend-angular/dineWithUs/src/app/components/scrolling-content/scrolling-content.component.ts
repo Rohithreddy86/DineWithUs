@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { from } from 'rxjs';
+import { Scrollable } from './../../models/Scrollable';
+import {SCROLLABLES} from './../../models/Scrollables-static'
 @Component({
     selector: 'app-scrolling-content',
     templateUrl: './scrolling-content.component.html',
@@ -12,11 +14,12 @@ export class ScrollingContentComponent implements OnInit {
 
     ngOnInit(): void {
     }
-    dataSource = [
-        "https://js.devexpress.com/Content/images/doc/20_2/PhoneJS/person1.png",
-        "https://js.devexpress.com/Content/images/doc/20_2/PhoneJS/person2.png",
-        "https://js.devexpress.com/Content/images/doc/20_2/PhoneJS/person3.png",
-        "https://js.devexpress.com/Content/images/doc/20_2/PhoneJS/person4.png"
-    ];
+    dataSource = [];
+    dataSource1 = SCROLLABLES.forEach(e => this.dataSource.push(e.imageUrl));
+    GoTo(num)
+    {
+        console.log(num)
+        //window.location.href= this.scrollables.find(o => o.ID === num).imageClickLink;
+    }
 
 }

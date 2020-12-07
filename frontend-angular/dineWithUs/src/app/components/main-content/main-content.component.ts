@@ -17,11 +17,6 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
     this.videocards1 = VIDEOCARDS;
   }
-  testfn()
-  {
-    console.log(VIDEOCARDS);
-    console.log("hai");
-  }
   GoTo(num)
   {
     console.log("clicked");
