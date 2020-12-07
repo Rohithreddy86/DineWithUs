@@ -7,11 +7,17 @@ import { MainHeaderComponent } from './shared/main-header/main-header.component'
 
 import { DevExtremeModule } from 'devextreme-angular';
 import { from } from 'rxjs';
+import { ScrollingContentComponent } from './components/scrolling-content/scrolling-content.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    ScrollingContentComponent,
+    MainContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

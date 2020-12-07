@@ -9,17 +9,40 @@ div
     margin-right: 1%;
 }
 .img-responsive :hover{
-  cursor: pointer;
+    cursor: pointer;
 }
 .logo-display
 {
-  background-color: rgb(34,37,57);
-  padding-left: 10%;
-  padding-right: 10%;
-  margin: 0;
-  display: flex;
-  align-items: center;
+    background-color: #333545;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
+
+
+
+#menu-tool-btn{
+    color: #CCCCCC;
+}
+#menu-tool-btn.dx-state-hover {
+    color: #ebebeb;
+}
+#menu-tool-btn.dx-state-selected{
+    color: #ebebeb;
+}
+#menu-tool-btn.dx-state-active{
+    color: #ebebeb;
+}
+
+
+
+/* ::ng-deep .dx-button{
+  background-color: red;
+} */
+
+
 .toolbar
 {
   background-color:rgb(51,53,69);
