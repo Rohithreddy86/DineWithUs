@@ -13,7 +13,7 @@ export const VIDEOCARDS = [
         "title" : "Video title 2",
         "description" : "video description detailed description 1",
         "imageUrl" : "./../../../assets/images/logo.jpg",
-        "ytLink" : "https://www.youtube.com/",
+        "ytLink" : "https://www.youtube.com/watch?v=cb8GzmqiVv4",
         videoType : ["featured","topviewed"]
     },
     {

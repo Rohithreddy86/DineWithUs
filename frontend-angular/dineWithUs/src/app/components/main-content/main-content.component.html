@@ -2,7 +2,7 @@
 
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;">
     <div *ngFor='let videocard of videocards1'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo()">
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{videocard.title}}</h5>

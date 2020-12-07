@@ -26,7 +26,6 @@ export class MainContentComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    //window.location.href= this.videocards1.find(o => o.cardID === num).ytLink;
-    window.location.href = this.videocards1[0].ytLink;
+    window.location.href= this.videocards1.find(o => o.cardID === num).ytLink;
   }
 }
