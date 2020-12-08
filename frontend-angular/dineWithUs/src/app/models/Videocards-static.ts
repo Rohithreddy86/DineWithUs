@@ -30,22 +30,22 @@ export const VIDEOCARDS = [
         "description" : "video description detailed description 1",
         "imageUrl" : "./../../../assets/images/logo.jpg",
         "ytLink" : "https://www.youtube.com/",
-        videoType : ["featured","topviewed"]
+        videoType : ["featured","topviewed","mostrecent"]
     },
-    {
-        "cardID" : 5,
-        "title" : "Video title 5",
-        "description" : "video description detailed description 1",
-        "imageUrl" : "./../../../assets/images/logo.jpg",
-        "ytLink" : "https://www.youtube.com/",
-        videoType : ["featured","topviewed"]
-    },
-    {
-        "cardID" : 6,
-        "title" : "Video title 6",
-        "description" : "video description detailed description 1",
-        "imageUrl" : "./../../../assets/images/logo.jpg",
-        "ytLink" : "https://www.youtube.com/",
-        videoType : ["featured","topviewed"]
-    }
+    // {
+    //     "cardID" : 5,
+    //     "title" : "Video title 5",
+    //     "description" : "video description detailed description 1",
+    //     "imageUrl" : "./../../../assets/images/logo.jpg",
+    //     "ytLink" : "https://www.youtube.com/",
+    //     videoType : ["featured","topviewed"]
+    // },
+    // {
+    //     "cardID" : 6,
+    //     "title" : "Video title 6",
+    //     "description" : "video description detailed description 1",
+    //     "imageUrl" : "./../../../assets/images/logo.jpg",
+    //     "ytLink" : "https://www.youtube.com/",
+    //     videoType : ["featured","topviewed"]
+    // }
 ]

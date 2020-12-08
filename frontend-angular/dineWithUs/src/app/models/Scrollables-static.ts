@@ -27,7 +27,8 @@ export const SCROLLABLES = [
     {
         "ID" : 5,
         "imageUrl" : "./../../../assets/images/logo.jpg",
-        "imageClickLink" : "/home",
+        "imageClickLink" : "youtube.com",
         "scrollableTitle" : "Youtube"
     }
+
 ]

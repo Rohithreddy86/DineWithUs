@@ -1,6 +1,7 @@
 <app-scrolling-content></app-scrolling-content>
-
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;">
+<!-- featured videos here -->
+<h1 class="d-flex justify-content-center" style="padding-top:30px;">Featured</h1>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
     <div *ngFor='let videocard of videocards1'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
@@ -11,6 +12,65 @@
         </div>
     </div>
 </div>
+<div class="col-md-12 text-center">
+  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+  <a href="/featured">See All</a>
+</div>
+
+<!-- Most recent videos here -->
+<h1 class="d-flex justify-content-center" style="padding-top:30px;">Most Recent</h1>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor='let videocard of videocards1'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
+            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{videocard.title}}</h5>
+                <p class="card-text">{{videocard.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 text-center">
+  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/mostrecent" >Go To Most Recent Videos</button> -->
+  <a href="/mostrecent">See All</a>
+</div>
+
+<!-- Coming soon videos card-header -->
+<h1 class="d-flex justify-content-center" style="padding-top:30px;">Coming Soon</h1>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor='let videocard of videocards1'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
+            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{videocard.title}}</h5>
+                <p class="card-text">{{videocard.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 text-center">
+  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/comingsoon" >Go To Coming Soon Videos</button> -->
+  <a href="/comingsoon">See All</a>
+</div>
+
+<!-- top viewed videos here -->
+<h1 class="d-flex justify-content-center" style="padding-top:30px;">Top Viewed</h1>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor='let videocard of videocards1'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
+            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{videocard.title}}</h5>
+                <p class="card-text">{{videocard.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 text-center">
+  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/topviewed" >Go To Top Videos</button> -->
+  <a href="/topviewed">See All</a>
+</div>
+
 
 <div class="card" style="margin: 30px;">
     <div class="card-header">
