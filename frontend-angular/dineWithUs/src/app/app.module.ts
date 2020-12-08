@@ -10,6 +10,13 @@ import { from } from 'rxjs';
 import { ScrollingContentComponent } from './components/scrolling-content/scrolling-content.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { FeaturedComponent } from './pages/featured/featured.component';
+import { MostRecentComponent } from './pages/most-recent/most-recent.component';
+import { CommingSoonComponent } from './pages/comming-soon/comming-soon.component';
+import { TopViewedComponent } from './pages/top-viewed/top-viewed.component';
+import { AboutUSComponent } from './components/support/about-us/about-us.component';
+import { AboutDEVComponent } from './components/support/about-dev/about-dev.component';
+import { FeedbackComponent } from './components/support/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +24,14 @@ import { FooterComponent } from './shared/footer/footer.component';
     MainHeaderComponent,
     ScrollingContentComponent,
     MainContentComponent,
-    FooterComponent
+    FooterComponent,
+    FeaturedComponent,
+    MostRecentComponent,
+    CommingSoonComponent,
+    TopViewedComponent,
+    AboutUSComponent,
+    AboutDEVComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
