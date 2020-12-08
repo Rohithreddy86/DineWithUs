@@ -2,7 +2,7 @@
 <!-- featured videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Featured</h1>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of videocards1'>
+    <div *ngFor='let videocard of featuredVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
             <div class="card-body">
@@ -20,7 +20,7 @@
 <!-- Most recent videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Most Recent</h1>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of videocards1'>
+    <div *ngFor='let videocard of mostRecentVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
             <div class="card-body">
@@ -38,7 +38,7 @@
 <!-- Coming soon videos card-header -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Coming Soon</h1>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of videocards1'>
+    <div *ngFor='let videocard of comingSoonVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
             <div class="card-body">
@@ -56,7 +56,7 @@
 <!-- top viewed videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Top Viewed</h1>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of videocards1'>
+    <div *ngFor='let videocard of topViewedVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
             <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
             <div class="card-body">

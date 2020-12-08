@@ -1,1 +1,12 @@
-<p>most-recent works!</p>
+<h1 class="d-flex justify-content-center" style="padding-top:30px;">Most Recent</h1>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor='let videocard of mostRecentVideoCards'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
+            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{videocard.title}}</h5>
+                <p class="card-text">{{videocard.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

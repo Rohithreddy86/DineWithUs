@@ -5,8 +5,8 @@ export const VIDEOCARDS = [
         "title" : "Video title 1",
         "description" : "video description detailed description 1",
         "imageUrl" : "./../../../assets/images/logo.jpg",
-        "ytLink" : "https://www.youtube.com/",
-        videoType : ["featured","topviewed"]
+        "ytLink" : "https://www.youtube.com/watch?v=CCrqvfIzOJk",
+        videoType : ["featured","comingsoon","mostrecent"]
     },
     {
         "cardID" : 2,
@@ -14,7 +14,7 @@ export const VIDEOCARDS = [
         "description" : "video description detailed description 1",
         "imageUrl" : "./../../../assets/images/logo.jpg",
         "ytLink" : "https://www.youtube.com/watch?v=cb8GzmqiVv4",
-        videoType : ["featured","topviewed"]
+        videoType : ["featured","comingsoon","mostrecent"]
     },
     {
         "cardID" : 3,
@@ -32,20 +32,20 @@ export const VIDEOCARDS = [
         "ytLink" : "https://www.youtube.com/",
         videoType : ["featured","topviewed","mostrecent"]
     },
-    // {
-    //     "cardID" : 5,
-    //     "title" : "Video title 5",
-    //     "description" : "video description detailed description 1",
-    //     "imageUrl" : "./../../../assets/images/logo.jpg",
-    //     "ytLink" : "https://www.youtube.com/",
-    //     videoType : ["featured","topviewed"]
-    // },
-    // {
-    //     "cardID" : 6,
-    //     "title" : "Video title 6",
-    //     "description" : "video description detailed description 1",
-    //     "imageUrl" : "./../../../assets/images/logo.jpg",
-    //     "ytLink" : "https://www.youtube.com/",
-    //     videoType : ["featured","topviewed"]
-    // }
+    {
+        "cardID" : 5,
+        "title" : "Video title 5",
+        "description" : "video description detailed description 1",
+        "imageUrl" : "./../../../assets/images/logo.jpg",
+        "ytLink" : "https://www.youtube.com/",
+        videoType : ["featured","topviewed","comingsoon","mostrecent"]
+    },
+    {
+        "cardID" : 6,
+        "title" : "Video title 6",
+        "description" : "video description detailed description 1",
+        "imageUrl" : "./../../../assets/images/logo.jpg",
+        "ytLink" : "https://www.youtube.com/",
+        videoType : ["comingsoon","mostrecent"]
+    }
 ]
