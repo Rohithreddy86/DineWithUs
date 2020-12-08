@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'mostrecent', component: MostRecentComponent},
   { path: 'topviewed', component: TopViewedComponent},
   { path: 'aboutus', component: AboutUSComponent},
+  { path: 'aboutus/:id', component: AboutUSComponent},
   { path: 'aboutdevs', component: AboutDEVComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
