@@ -17,6 +17,7 @@ import { TopViewedComponent } from './pages/top-viewed/top-viewed.component';
 import { AboutUSComponent } from './components/support/about-us/about-us.component';
 import { AboutDEVComponent } from './components/support/about-dev/about-dev.component';
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
+import { DummyComponent } from './components/dummy/dummy.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FeedbackComponent } from './components/support/feedback/feedback.compon
     TopViewedComponent,
     AboutUSComponent,
     AboutDEVComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
