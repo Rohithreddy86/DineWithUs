@@ -14,15 +14,15 @@ export class MainContentComponent implements OnInit {
   comingSoonVideoCards : Videocard[];
   topViewedVideoCards : Videocard[];
   mostRecentVideoCards : Videocard[];
-  videocards1 :Videocard[];
-  youtubeurl : string;
-  constantyturl : string = "https://www.youtube.com/embed/";
+  // videocards1 :Videocard[];
+  // youtubeurl : string;
+  // constantyturl : string = "https://www.youtube.com/embed/";
 
   constructor() { }
 
   ngOnInit(): void {
 
-    this.videocards1=VIDEOCARDS;
+    //this.videocards1=VIDEOCARDS;
     //filtering featured video cards and giving only first four videocards to view
     this.featuredVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("featured"));
     this.featuredVideoCards = this.featuredVideoCards.slice(0, 4)
@@ -39,8 +39,8 @@ export class MainContentComponent implements OnInit {
     this.topViewedVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("topviewed"));
     this.topViewedVideoCards = this.topViewedVideoCards.slice(0,4);
 
-    this.youtubeurl = this.constantyturl + this.featuredVideoCards[0].ytLink.slice(32,)
-    console.log(this.youtubeurl)
+    // this.youtubeurl = this.constantyturl + this.featuredVideoCards[0].ytLink.slice(32,)
+    // console.log(this.youtubeurl)
 
 
   }
@@ -49,7 +49,8 @@ export class MainContentComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    //window.location.href= this.videocards1.find(o => o.cardID === num).ytLink;
-    window.location.href="/aboutus/"+num;
+    window.location.href= VIDEOCARDS.find(o => o.cardID === num).ytLink;
+    //window.location.href="/aboutus/"+num;
+    //this function is implemented in rohith branch will update at last dont edit this function
   }
 }

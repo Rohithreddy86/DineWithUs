@@ -18,6 +18,7 @@ export class FeaturedComponent implements OnInit {
     this.videocards1 = VIDEOCARDS;
     //filtering only featured video cards
     this.featuredVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("featured"));
+    console.log(this.featuredVideoCards);
   }
 
   GoTo(num)
