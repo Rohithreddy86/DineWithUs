@@ -19,6 +19,10 @@ import { AboutDEVComponent } from './components/support/about-dev/about-dev.comp
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { BaseComponent } from './components/base/base.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FirebaseDatabaseService } from './services/firebaseDatabaseService';
 
 @NgModule({
   declarations: [
@@ -40,9 +44,11 @@ import { BaseComponent } from './components/base/base.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DevExtremeModule
+    DevExtremeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [FirebaseDatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
