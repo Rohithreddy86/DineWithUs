@@ -49,8 +49,8 @@ export class MainContentComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    window.location.href= VIDEOCARDS.find(o => o.cardID === num).ytLink;
-    //window.location.href="/aboutus/"+num;
+    //window.location.href= VIDEOCARDS.find(o => o.cardID === num).ytLink;
+    window.location.href="/base/"+num;
     //this function is implemented in rohith branch will update at last dont edit this function
   }
 }

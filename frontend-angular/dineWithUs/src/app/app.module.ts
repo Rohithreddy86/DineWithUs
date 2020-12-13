@@ -18,6 +18,7 @@ import { AboutUSComponent } from './components/support/about-us/about-us.compone
 import { AboutDEVComponent } from './components/support/about-dev/about-dev.component';
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { BaseComponent } from './components/base/base.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DummyComponent } from './components/dummy/dummy.component';
     AboutUSComponent,
     AboutDEVComponent,
     FeedbackComponent,
-    DummyComponent
+    DummyComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,

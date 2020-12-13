@@ -8,6 +8,8 @@ import { CommingSoonComponent } from './pages/comming-soon/comming-soon.componen
 import { TopViewedComponent } from './pages/top-viewed/top-viewed.component';
 import { AboutDEVComponent } from './components/support/about-dev/about-dev.component';
 import { AboutUSComponent } from './components/support/about-us/about-us.component';
+import { BaseComponent } from './components/base/base.component';
+
 
 
 
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'topviewed', component: TopViewedComponent},
   { path: 'aboutus', component: AboutUSComponent},
   { path: 'aboutus/:id', component: AboutUSComponent},
+  { path: 'base', component: BaseComponent},
+  { path: 'base/:id', component: BaseComponent},
   { path: 'aboutdevs', component: AboutDEVComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
