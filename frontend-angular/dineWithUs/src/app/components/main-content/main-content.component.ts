@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { VIDEOCARDS } from './../../models/Videocards-static';
-import { Videocard } from './../../models/Videocard';
+// import { Videocard } from './../../models/Videocard';
+import {Inject} from '@angular/core';
+
+import { Videocard } from './../../models/NewVideoCard'
+
+import { AngularFireDatabase } from '@angular/fire/database';
+import { FirebaseDatabaseService } from 'src/app/services/firebaseDatabaseService';
 
 
 @Component({
@@ -10,40 +16,40 @@ import { Videocard } from './../../models/Videocard';
 })
 export class MainContentComponent implements OnInit {
 
+    course:any;
+    testVar : Videocard;
+    lastID : Number;
+    videoCards : Videocard[] = [];
+    featuredVideoCards : Videocard[] = [];
+    comingSoonVideoCards : Videocard[] = [];
+    topViewedVideoCards : Videocard[] = [];
+    mostRecentVideoCards : Videocard[] = [];
     videoDescriptionClicked = false;
-    featuredVideoCards : Videocard[];
-    comingSoonVideoCards : Videocard[];
-    topViewedVideoCards : Videocard[];
-    mostRecentVideoCards : Videocard[];
-    // videocards1 :Videocard[];
-    // youtubeurl : string;
-    // constantyturl : string = "https://www.youtube.com/embed/";
 
-    constructor() { }
+    constructor(@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService) { }
 
     ngOnInit(): void {
 
-        //this.videocards1=VIDEOCARDS;
-        //filtering featured video cards and giving only first four videocards to view
-        this.featuredVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("featured"));
-        this.featuredVideoCards = this.featuredVideoCards.slice(0, 4)
+        //
+    this.service.getAllVideoCards()
+    .subscribe(actions => {
+      this.testVar =actions.payload.val() as Videocard;
+      this.videoCards.push(this.testVar);  
 
-        //filtering coming soon video cards and giving only first four videocards to view
-        this.comingSoonVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("comingsoon"));
-        this.comingSoonVideoCards = this.comingSoonVideoCards.slice(0,4);
+      this.featuredVideoCards = this.videoCards.filter(o => o.videoType["featured"]==true);
 
-        //filtering most recent video cards and giving only first four videocards to view
-        this.mostRecentVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("mostrecent"));
-        this.mostRecentVideoCards = this.mostRecentVideoCards.slice(0,4);
+      this.topViewedVideoCards = this.videoCards.filter(o => o.videoType["topviewed"]==true);
 
-        //filtering top viewed video cards and giving only first four videocards to view
-        this.topViewedVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("topviewed"));
-        this.topViewedVideoCards = this.topViewedVideoCards.slice(0,4);
+      this.comingSoonVideoCards = this.videoCards.filter(o => o.videoType["comingsoon"]==true);
 
-        // this.youtubeurl = this.constantyturl + this.featuredVideoCards[0].ytLink.slice(32,)
-        // console.log(this.youtubeurl)
+      this.mostRecentVideoCards = this.videoCards.filter(o => o.videoType["mostrecent"]==true);
 
-
+      this.featuredVideoCards = this.featuredVideoCards.slice(0, 4);
+      this.comingSoonVideoCards = this.comingSoonVideoCards.slice(0,4);
+      this.mostRecentVideoCards = this.mostRecentVideoCards.slice(0,4);
+      this.topViewedVideoCards = this.topViewedVideoCards.slice(0,4);
+    });
+        //
     }
 
     showVideoDescription(){
@@ -54,8 +60,8 @@ export class MainContentComponent implements OnInit {
     {
         console.log("clicked");
         console.log(num);
-        window.location.href= VIDEOCARDS.find(o => o.cardID === num).ytLink;
-        //window.location.href="/aboutus/"+num;
+        //window.location.href= VIDEOCARDS.find(o => o.cardID === num).ytLink;
+        window.location.href="/base/"+num;
         //this function is implemented in rohith branch will update at last dont edit this function
     }
 }

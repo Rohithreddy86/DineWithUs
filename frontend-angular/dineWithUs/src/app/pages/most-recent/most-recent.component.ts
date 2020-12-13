@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { VIDEOCARDS } from './../../models/Videocards-static';
-import { Videocard } from './../../models/Videocard';
+import {Inject} from '@angular/core';
+
+import { Videocard } from './../../models/NewVideoCard'
+
+import { AngularFireDatabase } from '@angular/fire/database';
+import { FirebaseDatabaseService } from 'src/app/services/firebaseDatabaseService';
 
 @Component({
   selector: 'app-most-recent',
@@ -9,13 +14,23 @@ import { Videocard } from './../../models/Videocard';
 })
 export class MostRecentComponent implements OnInit {
 
-  mostRecentVideoCards : Videocard[];
+  course:any;
+  testVar : Videocard;
+  lastID : Number;
+  videoCards : Videocard[] = [];
+  mostRecentVideoCards : Videocard[] = [];
 
-  constructor() { }
+  constructor(@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService) { }
 
   ngOnInit(): void {
     //filtering most recent video cards and giving only first four videocards to view
-    this.mostRecentVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("mostrecent"));
+    //this.mostRecentVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("mostrecent"));
+    this.service.getAllVideoCards()
+    .subscribe(actions => {
+      this.testVar =actions.payload.val() as Videocard;
+      this.videoCards.push(this.testVar);  
+      this.mostRecentVideoCards = this.videoCards.filter(o => o.videoType["mostrecent"]==true);
+    });
   }
 
   GoTo(num)

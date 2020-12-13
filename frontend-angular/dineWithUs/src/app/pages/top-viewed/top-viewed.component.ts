@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { VIDEOCARDS } from './../../models/Videocards-static';
-import { Videocard } from './../../models/Videocard';
+import {Inject} from '@angular/core';
+
+import { Videocard } from './../../models/NewVideoCard'
+
+import { AngularFireDatabase } from '@angular/fire/database';
+import { FirebaseDatabaseService } from 'src/app/services/firebaseDatabaseService';
 
 @Component({
   selector: 'app-top-viewed',
@@ -9,20 +14,29 @@ import { Videocard } from './../../models/Videocard';
 })
 export class TopViewedComponent implements OnInit {
 
-  topViewedVideoCards : Videocard[];
+  testVar : Videocard;
+  videoCards : Videocard[] = [];
+  topViewedVideoCards : Videocard[] = [];
 
-  constructor() { }
+  constructor(@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService) { }
 
   ngOnInit(): void {
     //filtering top viewed video cards and giving only first four videocards to view
-    this.topViewedVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("topviewed"));
+    //this.topViewedVideoCards = VIDEOCARDS.filter(o => o.videoType.includes("topviewed"));
+    this.service.getAllVideoCards()
+    .subscribe(actions => {
+      this.testVar =actions.payload.val() as Videocard;
+      this.videoCards.push(this.testVar);  
+      this.topViewedVideoCards = this.videoCards.filter(o => o.videoType["topviewed"]==true);
+    });
   }
 
   GoTo(num)
   {
     console.log("clicked");
     console.log(num);
-    window.location.href= this.topViewedVideoCards.find(o => o.cardID === num).ytLink;
+    //window.location.href= this.topViewedVideoCards.find(o => o.cardID === num).ytLink;
+    window.location.href="/base/"+num;
   }
 
 }
