@@ -9,8 +9,7 @@ import { TopViewedComponent } from './pages/top-viewed/top-viewed.component';
 import { AboutDEVComponent } from './components/support/about-dev/about-dev.component';
 import { AboutUSComponent } from './components/support/about-us/about-us.component';
 import { BaseComponent } from './components/base/base.component';
-
-
+import { DummyComponent } from './components/dummy/dummy.component';
 
 
 const routes: Routes = [
@@ -24,6 +23,7 @@ const routes: Routes = [
   { path: 'base', component: BaseComponent},
   { path: 'base/:id', component: BaseComponent},
   { path: 'aboutdevs', component: AboutDEVComponent},
+  { path: 'dummy', component: DummyComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
