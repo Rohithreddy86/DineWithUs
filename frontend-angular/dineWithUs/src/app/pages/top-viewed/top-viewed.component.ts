@@ -22,7 +22,8 @@ export class TopViewedComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    window.location.href= this.topViewedVideoCards.find(o => o.cardID === num).ytLink;
+    //window.location.href= this.topViewedVideoCards.find(o => o.cardID === num).ytLink;
+    window.location.href="/base/"+num;
   }
 
 }

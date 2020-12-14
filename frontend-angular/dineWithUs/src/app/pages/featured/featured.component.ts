@@ -25,7 +25,8 @@ export class FeaturedComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    window.location.href= this.featuredVideoCards.find(o => o.cardID === num).ytLink;
+    //window.location.href= this.featuredVideoCards.find(o => o.cardID === num).ytLink;
+    window.location.href="/base/"+num;
   }
 
 }

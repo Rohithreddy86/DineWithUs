@@ -22,7 +22,8 @@ export class MostRecentComponent implements OnInit {
   {
     console.log("clicked");
     console.log(num);
-    window.location.href= this.mostRecentVideoCards.find(o => o.cardID === num).ytLink;
+    //window.location.href= this.mostRecentVideoCards.find(o => o.cardID === num).ytLink;
+    window.location.href="/base/"+num;
   }
 
 }
