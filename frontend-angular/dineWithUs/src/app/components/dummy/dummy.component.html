@@ -1,88 +1,201 @@
-<p>dummy works!</p>
-<h1 class="d-flex justify-content-center" style="padding-top:30px;">Featured</h1>
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of featuredVideoCards'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
-            <img class="card-img-top" src={{videocard.imageUrl}} (click)="GoTo(videocard.cardID)" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</p>
-                <dx-button stylingMode="text" text="video Description" (onClick)="showVideoDescription()"></dx-button>
-                <!-- <button style="border:none; background-color:white" onclick="showVideoDescription()">video Description</button> -->
-                <div *ngIf="videoDescriptionClicked">
-                    <p class="card-text"> {{videocard.description}} </p>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ADMIN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <button type="button" class="btn btn-light" (click)="addCardSelected()">Add card</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-light" (click)="deleteCardSelected()">Delete Cards</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-light" (click)="updateCardSelected()">Update Cards</button>
+            </li>        
+          </ul>
+        </div>
+      </nav>
+</div>
+<div *ngIf="!addCardSelectedBool && !deleteCardSelectedBool && !updateCardSelectedBool">
+    <div class="card" style="margin: 5%;">
+        <div class="card-header">
+          Hello ADMIN user
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Select any of the options below to continue. Thanks!!</p> 
+            <div style="display: flex;justify-content: center;">    
+            <button type="button" class="btn btn-primary" (click)="addCardSelected()" style="margin: 1%;">Add card</button>
+            <button type="button" class="btn btn-primary" (click)="deleteCardSelected()" style="margin: 1%;">Delete Cards</button>
+            <button type="button" class="btn btn-primary" (click)="updateCardSelected()" style="margin: 1%;">Update Cards</button>  
+            </div> 
+          </blockquote>
+        </div>
+      </div>
+</div>
+<div class="card" style="margin: 30px;" *ngIf="addCardSelectedBool">
+    <div class="card-header">
+      <b>Create New Card</b>
+    </div>
+    <div class="card-body">
+        <form novalidate #addForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Card Title</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter card Title here" name="CardTitle" [(ngModel)]="newCard.title" #CardTitle="ngModel" required>
+              <div *ngIf="CardTitle.invalid && (CardTitle.dirty || CardTitle.touched)">
+                <p *ngIf="CardTitle.errors?.required" class="error">Card Title is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Youtube Link</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Raw Youtube link here"  name="CardYtLink" [(ngModel)]="newCard.ytLink" #CardYtLink="ngModel" required minlength="35">
+              <div *ngIf="CardYtLink.invalid && (CardYtLink.dirty || CardYtLink.touched)">
+                <p *ngIf="CardYtLink.errors?.required" class="error">Youtube Link for Video Card is required</p>
+                <p *ngIf="CardYtLink.errors?.minlength" class="error">Minimum length - 35 is not satisfied</p>
+              </div>
+            </div>
+            <div class="form-group">                
+                <label for="exampleFormControlFile1">Card Image</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="selectedFile($event)" accept="Image/*"><br>
+                <img [src]="urlForView" width="100" height="100">
+            </div>
+            <label for="exampleFormControlFile1">Type of Video</label>
+            <div style="margin-left: 2%;">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="newCard.videoType.featured" name="featured">
+                <label class="form-check-label" for="inlineCheckbox1">Featured</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="newCard.videoType.comingsoon" name="comingsoon">
+                <label class="form-check-label" for="inlineCheckbox2">Coming Soon</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" [(ngModel)]="newCard.videoType.topviewed" name="topviewed">
+                <label class="form-check-label" for="inlineCheckbox3">Top Viewed</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" [(ngModel)]="newCard.videoType.mostrecent" name="mostrecent">
+                <label class="form-check-label" for="inlineCheckbox3">Most Recent</label>
+            </div>
+        </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required name="CardDescription" [(ngModel)]="newCard.description" #CardDescription="ngModel" minlength="10">                    
+                </textarea>
+                <div *ngIf="CardDescription.invalid && (CardDescription.dirty || CardDescription.touched)">
+                    <p *ngIf="CardDescription.errors?.required" class="error">Description is required</p>
+                    <p *ngIf="CardDescription.errors?.minlength" class="error">Minimum length is not satisfied</p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="addForm.form.invalid">Add Card</button>
+            <div *ngIf="addForm.form.invalid">
+                <p class="error" style="color: black;">This button is disabled until are valid fields are filled</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card" style="margin: 30px;" *ngIf="deleteCardSelectedBool">
+    <div class="card-header">
+      <b>Delete Cards</b>
+    </div>
+    <div class="card-body">
+      <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+          <div *ngFor='let videocard of videocardsdatastatic'>
+              <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;">
+                  <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">{{videocard.title}}</h5>
+                      <button type="button" class="btn btn-danger"  (click)="deleteCard(videocard.cardID)">Delete This Card</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="card" style="margin: 30px;" *ngIf="updateCardSelectedBool">
+    <div class="card-header">
+      <b>Update Cards</b>
+    </div>
+    <div class="card-body">
+      <div class="card-body">
+        <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+            <div *ngFor='let videocard of videocardsdatastatic'>
+                <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;">
+                    <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{videocard.title}}</h5>
+                        <button type="button" class="btn btn-success"  (click)="editCard(videocard.cardID)">Edit This Card</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
-  <a href="/featured">See All</a>
-</div>
-
-<!-- Most recent videos here -->
-<h1 class="d-flex justify-content-center" style="padding-top:30px;">Most Recent</h1>
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of mostRecentVideoCards'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
-            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</h5>
-                <p class="card-text">video description</p>
+<div *ngIf="selectedRecordForEdit">
+  <div class="card-header">
+    <b>Update Card</b>
+  </div>
+  <div class="card-body">
+      <form novalidate #addForm2="ngForm">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Card Title</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter card Title here" name="CardTitle2" [(ngModel)]="selectedCardForEditing.title" #CardTitle2="ngModel" required>
+            <div *ngIf="CardTitle2.invalid && (CardTitle2.dirty || CardTitle2.touched)">
+              <p *ngIf="CardTitle2.errors?.required" class="error">Card Title is required</p>
             </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/mostrecent" >Go To Most Recent Videos</button> -->
-  <a href="/mostrecent">See All</a>
-</div>
-
-<!-- Coming soon videos card-header -->
-<h1 class="d-flex justify-content-center" style="padding-top:30px;">Coming Soon</h1>
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of comingSoonVideoCards'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
-            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</h5>
-                <p class="card-text">video description</p>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Youtube Link</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Raw Youtube link here"  name="CardYtLink2" [(ngModel)]="selectedCardForEditing.ytLink" #CardYtLink2="ngModel" required minlength="35">
+            <div *ngIf="CardYtLink2.invalid && (CardYtLink2.dirty || CardYtLink2.touched)">
+              <p *ngIf="CardYtLink2.errors?.required" class="error">Youtube Link for Video Card is required</p>
+              <p *ngIf="CardYtLink2.errors?.minlength" class="error">Minimum length - 35 is not satisfied</p>
             </div>
-        </div>
-    </div>
+          </div>
+          <div class="form-group">                
+              <label for="exampleFormControlFile1">Card Image</label><br>
+              <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="selectedFile($event)" accept="Image/*"><br> -->
+              <img [src]="selectedCardForEditingImageUrl" width="100" height="100"><br><small style="color: coral;">image edit not supported in edit mode</small>
+          </div>
+          <label for="exampleFormControlFile1">Type of Video</label>
+          <div style="margin-left: 2%;">
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="selectedCardForEditing.videoType.featured" name="featured2">
+              <label class="form-check-label" for="inlineCheckbox1">Featured</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="selectedCardForEditing.videoType.comingsoon" name="comingsoon2">
+              <label class="form-check-label" for="inlineCheckbox2">Coming Soon</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" [(ngModel)]="selectedCardForEditing.videoType.topviewed" name="topviewed2">
+              <label class="form-check-label" for="inlineCheckbox3">Top Viewed</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" [(ngModel)]="selectedCardForEditing.videoType.mostrecent" name="mostrecent">
+              <label class="form-check-label" for="inlineCheckbox3">Most Recent</label>
+          </div>
+      </div>
+          <br>
+          <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required name="CardDescription2" [(ngModel)]="selectedCardForEditing.description" #CardDescription2="ngModel" minlength="10">                    
+              </textarea>
+              <div *ngIf="CardDescription2.invalid && (CardDescription.dirty || CardDescription.touched)">
+                  <p *ngIf="CardDescription2.errors?.required" class="error">Description is required</p>
+                  <p *ngIf="CardDescription2.errors?.minlength" class="error">Minimum length is not satisfied</p>
+              </div>
+          </div>
+          <button class="btn btn-primary" (click)="updateCard(selectedCardForEditing.cardID)">Update Card</button>
+      </form>
+  </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/comingsoon" >Go To Coming Soon Videos</button> -->
-  <a href="/comingsoon">See All</a>
-</div>
-
-<!-- top viewed videos here -->
-<h1 class="d-flex justify-content-center" style="padding-top:30px;">Top Viewed</h1>
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
-    <div *ngFor='let videocard of topViewedVideoCards'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" (click)="GoTo(videocard.cardID)">
-            <img class="card-img-top" src={{videocard.imageUrl}} alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</h5>
-                <p class="card-text">video description</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/topviewed" >Go To Top Videos</button> -->
-  <a href="/topviewed">See All</a>
-</div>
-
-
-<div class="card" style="margin: 30px;">
-    <div class="card-header">
-      Quote
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <p>Life's unfairness doesn't give you right to walk the wrong path of dharma</p>
-        <footer class="blockquote-footer">Bhagawan Shree Krishna in <cite title="Bhagavadgita">Bhagavadgita</cite></footer>
-      </blockquote>
-    </div>
+<div style="display: flex;justify-content: center;margin: 5%;">
+<button type="button" class="btn btn-primary btn-lg" (click)="logout()">Log Out</button>
 </div>
