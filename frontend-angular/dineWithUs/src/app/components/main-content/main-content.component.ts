@@ -30,6 +30,8 @@ export class MainContentComponent implements OnInit {
 
     ngOnInit(): void {
 
+        localStorage.setItem("developed by","Murari Mahith, Rohith Reddy, Mukesh, Prasanna")
+
         //
     this.service.getAllVideoCards()
     .subscribe(actions => {
