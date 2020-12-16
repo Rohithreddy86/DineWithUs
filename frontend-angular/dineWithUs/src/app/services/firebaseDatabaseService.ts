@@ -7,7 +7,7 @@ import { Videocard } from './../models/NewVideoCard';
 })
 export class FirebaseDatabaseService {
  
-  private dbPath = '/videocards';
+  private dbPath = '/videocards2';
  
   customersRef: AngularFireList<Videocard> = null;
 
