@@ -19,10 +19,16 @@ import { AboutDEVComponent } from './components/support/about-dev/about-dev.comp
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { BaseComponent } from './components/base/base.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirebaseDatabaseService } from './services/firebaseDatabaseService';
+import { AuthServiceFirebase } from './services/authServiceFirebase'
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,16 +45,24 @@ import { FirebaseDatabaseService } from './services/firebaseDatabaseService';
     AboutDEVComponent,
     FeedbackComponent,
     DummyComponent,
-    BaseComponent
+    BaseComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DevExtremeModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    FormsModule
   ],
-  providers: [FirebaseDatabaseService],
+  providers: [
+    FirebaseDatabaseService,
+    AngularFirestore,
+    AuthServiceFirebase
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

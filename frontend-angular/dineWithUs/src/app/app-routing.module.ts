@@ -10,6 +10,7 @@ import { AboutDEVComponent } from './components/support/about-dev/about-dev.comp
 import { AboutUSComponent } from './components/support/about-us/about-us.component';
 import { BaseComponent } from './components/base/base.component';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'base', component: BaseComponent},
   { path: 'base/:id', component: BaseComponent},
   { path: 'aboutdevs', component: AboutDEVComponent},
-  { path: 'dummy', component: DummyComponent},
+  { path: 'add', component: DummyComponent},
+  { path: 'admin', component: AdminComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

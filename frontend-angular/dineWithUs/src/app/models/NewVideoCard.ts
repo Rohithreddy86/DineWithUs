@@ -1,3 +1,5 @@
+import { VideoType } from "./VideoType";
+
 export class Videocard
 {
     cardID : Number;
@@ -5,5 +7,5 @@ export class Videocard
     description : string;
     imageUrl : string;
     ytLink : string;
-    videoType : Object;
+    videoType : VideoType;
 }
