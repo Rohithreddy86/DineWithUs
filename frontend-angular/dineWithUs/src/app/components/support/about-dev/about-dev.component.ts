@@ -12,4 +12,8 @@ export class AboutDEVComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  GoTo(e){
+
+  }
+
 }
