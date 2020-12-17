@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './shared/main-header/main-header.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { DevExtremeModule } from 'devextreme-angular';
 import { from } from 'rxjs';
 import { ScrollingContentComponent } from './components/scrolling-content/scrolling-content.component';
@@ -56,7 +58,8 @@ import { FormsModule }   from '@angular/forms';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     FirebaseDatabaseService,

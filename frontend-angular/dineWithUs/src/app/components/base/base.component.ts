@@ -7,6 +7,7 @@ import { Videocard } from './../../models/NewVideocard';
 import { FirebaseDatabaseService } from 'src/app/services/firebaseDatabaseService';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-base',
@@ -28,7 +29,14 @@ export class BaseComponent implements OnInit {
     videoCards : Videocard[] = [];
     videocardsdatastatic;
 
-  constructor(@Inject(ActivatedRoute) private activatedRoute: ActivatedRoute, @Inject(DomSanitizer) private sanitizer: DomSanitizer,@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService) { }
+    ytAPIkey = 'AIzaSyA5tulkmk0ZbBjlAfZQioHFEx4rzN6m5JQ'
+
+    views : string;
+    likes : string;
+    comments : string;
+
+
+  constructor(@Inject(ActivatedRoute) private activatedRoute: ActivatedRoute, @Inject(DomSanitizer) private sanitizer: DomSanitizer,@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService, @Inject(HttpClient) private http : HttpClient) { }
 
   ngOnInit(): void {
 
@@ -45,7 +53,21 @@ export class BaseComponent implements OnInit {
         this.videoTitle = this.videocardsdatastatic.find(o => o.cardID == this.selectedID).title;
         this.videoDescription = this.videocardsdatastatic.find(o => o.cardID == this.selectedID).description;
         this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeurl)
+        console.log(this.youtubeurl)
+        console.log(this.youtubeurl.slice(30,))
+        this.http.get('https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+this.youtubeurl.slice(30,)+'&key=AIzaSyA5tulkmk0ZbBjlAfZQioHFEx4rzN6m5JQ').toPromise()
+          .then(a => {
+            console.log(a["items"][0]["statistics"]["viewCount"]);
+            console.log(a["items"][0]["statistics"]["likeCount"]);
+            this.views = a["items"][0]["statistics"]["viewCount"];
+            this.likes = a["items"][0]["statistics"]["likeCount"];
+            this.comments = a["items"][0]["statistics"]["commentCount"]
+          });
     });
+    setTimeout(()=>
+    {
+      console.log(this.youtubeurl)
+    },500)
 }
 
 }
