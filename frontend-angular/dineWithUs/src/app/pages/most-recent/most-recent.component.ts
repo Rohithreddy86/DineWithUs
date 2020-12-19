@@ -30,6 +30,7 @@ export class MostRecentComponent implements OnInit {
       this.testVar =actions.payload.val() as Videocard;
       this.videoCards.push(this.testVar);  
       this.mostRecentVideoCards = this.videoCards.filter(o => o.videoType["mostrecent"]==true);
+      this.mostRecentVideoCards = this.mostRecentVideoCards.reverse();
     });
   }
 

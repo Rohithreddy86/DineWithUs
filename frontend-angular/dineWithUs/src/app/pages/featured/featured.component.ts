@@ -30,6 +30,7 @@ export class FeaturedComponent implements OnInit {
       this.testVar =actions.payload.val() as Videocard;
       this.videoCards.push(this.testVar);  
       this.featuredVideoCards = this.videoCards.filter(o => o.videoType["featured"]==true);
+      this.featuredVideoCards = this.featuredVideoCards.reverse();
     });
   }
 

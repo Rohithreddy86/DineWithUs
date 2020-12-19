@@ -30,6 +30,7 @@ export class CommingSoonComponent implements OnInit {
       this.testVar =actions.payload.val() as Videocard;
       this.videoCards.push(this.testVar);  
       this.comingSoonVideoCards = this.videoCards.filter(o => o.videoType["comingsoon"]==true);
+      this.comingSoonVideoCards = this.comingSoonVideoCards.reverse();
     });
   }
 

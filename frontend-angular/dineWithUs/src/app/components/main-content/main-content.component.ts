@@ -39,12 +39,16 @@ export class MainContentComponent implements OnInit {
       this.videoCards.push(this.testVar);  
 
       this.featuredVideoCards = this.videoCards.filter(o => o.videoType["featured"]==true);
+      this.featuredVideoCards = this.featuredVideoCards.reverse()
 
       this.topViewedVideoCards = this.videoCards.filter(o => o.videoType["topviewed"]==true);
+      this.topViewedVideoCards = this.topViewedVideoCards.reverse()
 
       this.comingSoonVideoCards = this.videoCards.filter(o => o.videoType["comingsoon"]==true);
+      this.comingSoonVideoCards = this.comingSoonVideoCards.reverse()
 
       this.mostRecentVideoCards = this.videoCards.filter(o => o.videoType["mostrecent"]==true);
+      this.mostRecentVideoCards = this.mostRecentVideoCards.reverse()
 
       this.featuredVideoCards = this.featuredVideoCards.slice(0, 4);
       this.comingSoonVideoCards = this.comingSoonVideoCards.slice(0,4);

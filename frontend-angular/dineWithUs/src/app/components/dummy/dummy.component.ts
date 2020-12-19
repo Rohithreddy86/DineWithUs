@@ -128,8 +128,15 @@ export class DummyComponent implements OnInit {
         )
       )
     ).subscribe(objectsFromDB => {
-        videocardsdatastatic = objectsFromDB        
-        vCardVariable.cardID = videocardsdatastatic[objectsFromDB.length-1].cardID+1;
+        videocardsdatastatic = objectsFromDB     
+        if(typeof videocardsdatastatic[objectsFromDB.length-1].cardID === "undefined")
+        {
+          vCardVariable.cardID = 1;
+        }   
+        else
+        {
+          vCardVariable.cardID = videocardsdatastatic[objectsFromDB.length-1].cardID+1;
+        }        
         console.log(vCardVariable.cardID);
         console.log(vCardVariable);       
     });

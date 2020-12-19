@@ -28,6 +28,7 @@ export class TopViewedComponent implements OnInit {
       this.testVar =actions.payload.val() as Videocard;
       this.videoCards.push(this.testVar);  
       this.topViewedVideoCards = this.videoCards.filter(o => o.videoType["topviewed"]==true);
+      this.topViewedVideoCards = this.topViewedVideoCards.reverse();
     });
   }
 
