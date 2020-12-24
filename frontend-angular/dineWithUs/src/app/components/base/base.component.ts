@@ -27,13 +27,18 @@ export class BaseComponent implements OnInit {
     testVar : Videocard;
     lastID : Number;
     videoCards : Videocard[] = [];
-    videocardsdatastatic;
+    videocardsdatastatic = [];
 
     ytAPIkey = 'AIzaSyA5tulkmk0ZbBjlAfZQioHFEx4rzN6m5JQ'
 
     views : string;
     likes : string;
     comments : string;
+
+    // allTitles2 = new Object();
+    // searchString : string = "";
+    // searchResults = [];
+    // searchResultsObjects = [];
 
 
   constructor(@Inject(ActivatedRoute) private activatedRoute: ActivatedRoute, @Inject(DomSanitizer) private sanitizer: DomSanitizer,@Inject(AngularFireDatabase) private db: AngularFireDatabase, @Inject(FirebaseDatabaseService) private service : FirebaseDatabaseService, @Inject(HttpClient) private http : HttpClient) { }
@@ -48,8 +53,13 @@ export class BaseComponent implements OnInit {
       )
     ).subscribe(objectsFromDB => {
         this.videocardsdatastatic = objectsFromDB
+        console.log(objectsFromDB)
+        // objectsFromDB.forEach(element => {        
+        //   this.allTitles2[element.title.toLowerCase()] = element.key
+        // });
+        // console.log(this.allTitles2)
         this.selectedID = this.activatedRoute.snapshot.params.id;
-        this.youtubeurl = this.constantyturl + this.videocardsdatastatic.find(o => o.cardID == this.selectedID).ytLink.slice(32,);
+        this.youtubeurl = this.constantyturl + this.videocardsdatastatic.find(o => o.cardID == this.selectedID).ytLink.slice(32,) + "?autoplay=1";
         this.videoTitle = this.videocardsdatastatic.find(o => o.cardID == this.selectedID).title;
         this.videoDescription = this.videocardsdatastatic.find(o => o.cardID == this.selectedID).description;
         this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeurl)
@@ -69,5 +79,4 @@ export class BaseComponent implements OnInit {
       console.log(this.youtubeurl)
     },500)
 }
-
 }

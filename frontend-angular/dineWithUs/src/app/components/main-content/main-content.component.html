@@ -1,9 +1,13 @@
 <app-scrolling-content></app-scrolling-content>
 <!-- featured videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Featured</h1>
-<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+<div  style="margin-right: 10%;display: flex;justify-content:flex-end;" >
+    <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+    <a href="/featured"><small>See All Featured >></small> </a>
+</div>
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;padding-top: 0%;">
     <div *ngFor='let videocard of featuredVideoCards'>
-        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
+        <div class="card" style="width: 18rem;margin: 30px;margin-top: 0%;cursor: pointer;" >
             <img class="card-img-top" src={{videocard.imageUrl}} (click)="GoTo(videocard.cardID)" alt="Card image cap">
             <div class="card-body">
                 <p class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</p>
@@ -16,13 +20,16 @@
         </div>
     </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+<!-- <div class="col-md-12 text-center">
   <a href="/featured">See All Featured</a>
-</div>
+</div> -->
 
 <!-- Most recent videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Most Recent</h1>
+<div  style="margin-right: 10%;display: flex;justify-content:flex-end;" >
+    <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+    <a href="/mostrecent"><small>See All Most Recent >></small> </a>
+</div>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
     <div *ngFor='let videocard of mostRecentVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
@@ -33,13 +40,16 @@
         </div>
     </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/mostrecent" >Go To Most Recent Videos</button> -->
+<!-- <div class="col-md-12 text-center">
   <a href="/mostrecent">See All Most Recent</a>
-</div>
+</div> -->
 
 <!-- Coming soon videos card-header -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Coming Soon</h1>
+<div  style="margin-right: 10%;display: flex;justify-content:flex-end;" >
+    <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+    <a href="/comingsoon"><small>See All Coming Soon >></small> </a>
+</div>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
     <div *ngFor='let videocard of comingSoonVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
@@ -50,13 +60,17 @@
         </div>
     </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/comingsoon" >Go To Coming Soon Videos</button> -->
+<!-- <div class="col-md-12 text-center">
+  <button type="button" class="btn btn-primary btn-lg" routerLink="/comingsoon" >Go To Coming Soon Videos</button>
   <a href="/comingsoon">See All Coming Soon</a>
-</div>
+</div> -->
 
 <!-- top viewed videos here -->
 <h1 class="d-flex justify-content-center" style="padding-top:30px;">Top Viewed</h1>
+<div  style="margin-right: 10%;display: flex;justify-content:flex-end;" >
+    <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/featured" >Go To Featured Videos</button> -->
+    <a href="/topviewed"><small>See All Top Viewed >></small> </a>
+</div>
 <div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
     <div *ngFor='let videocard of topViewedVideoCards'>
         <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
@@ -67,10 +81,9 @@
         </div>
     </div>
 </div>
-<div class="col-md-12 text-center">
-  <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/topviewed" >Go To Top Videos</button> -->
+<!-- <div class="col-md-12 text-center">
   <a href="/topviewed">See All Top Viewed</a>
-</div>
+</div> -->
 
 
 <div class="card" style="margin: 30px;">

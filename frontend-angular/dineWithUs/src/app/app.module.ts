@@ -21,6 +21,7 @@ import { AboutDEVComponent } from './components/support/about-dev/about-dev.comp
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { BaseComponent } from './components/base/base.component';
+import { SearchComponent } from './components/search/search.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -48,6 +49,7 @@ import { FormsModule }   from '@angular/forms';
     FeedbackComponent,
     DummyComponent,
     BaseComponent,
+    SearchComponent,
     AdminComponent
   ],
   imports: [

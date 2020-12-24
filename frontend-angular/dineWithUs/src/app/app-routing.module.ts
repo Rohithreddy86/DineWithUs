@@ -11,6 +11,7 @@ import { AboutUSComponent } from './components/support/about-us/about-us.compone
 import { BaseComponent } from './components/base/base.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'aboutdevs', component: AboutDEVComponent},
   { path: 'add', component: DummyComponent},
   { path: 'admin', component: AdminComponent},
+  { path: 'search', component: SearchComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

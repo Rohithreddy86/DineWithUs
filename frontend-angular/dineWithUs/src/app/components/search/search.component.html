@@ -1,0 +1,29 @@
+<div style="margin: 10%;margin-bottom: 2%;margin-top:2%;">
+<div class="card">
+    <div class="card-header">
+      Search Our Entire Collection
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Search</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Start typing here" name="searchStr" [(ngModel)]="searchString" #searchStr="ngModel" (ngModelChange)="searching($event)">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div *ngIf="!clicked" style="display: flex;justify-content: center;color: rgb(179, 180, 182);">
+    <h3>Your search results will show up here, Start searching</h3>
+</div>
+
+<div class="main-content" style="padding: 30px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor='let videocard of searchResultsObjects'>
+        <div class="card" style="width: 18rem;margin: 30px;cursor: pointer;" >
+            <img class="card-img-top" src={{videocard.imageUrl}} (click)="GoTo(videocard.cardID)" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-title" style="font-size: small; font-weight: 500;">{{videocard.title}}</p>
+            </div>
+        </div>
+    </div>
+</div>
